@@ -18,6 +18,7 @@
             <td>Statement</td>
             <td>Creation Date</td>  
             <td>Supprimer</td>
+            <td>Modifier</td>
         </tr>
         <?php
         foreach ($showTask  as $showTask ) {
@@ -28,7 +29,9 @@
                 <td><?= $showTask->priority ?></td>
                 <td><?= $showTask ->state ?></td>
                 <td><?= $showTask->creationDate ?></td>
-                <<td><a type="button" href="toDo.php?id=<?= $showTask->id ?>">Supprimer</a></td>
+                <td><a type="button" href="toDo.php?id=<?= $showTask->id ?>&delete=1">Supprimer</a></td>
+                <td><a type="button" href="toDo.php?id=<?= $showTask->id ?>&modify=1">Modifier</a></td>
+
             </tr>
         <?php
         }

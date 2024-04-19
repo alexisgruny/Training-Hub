@@ -14,7 +14,7 @@ if (isset($_POST['addTask'])) {
     };
 
     if (isset($_POST['addDeadline'])) {
-        $newTask->deadline = htmlspecialchars($_POST['addDeadline']);
+        $newTask->deadline = ($_POST['addDeadline']);
         if (empty($newTask->deadline)) {
             $formError['deadline'] = 'Champ requis.';
         }
@@ -23,7 +23,7 @@ if (isset($_POST['addTask'])) {
         }
     }
     if (isset($_POST['addPriority'])) {
-        $newTask->priority = htmlspecialchars($_POST['addPriority']);
+        $newTask->priority = ($_POST['addPriority']);
         if (empty($newTask->priority))
             $formError['priority'] = 'Champ requis.';
     }

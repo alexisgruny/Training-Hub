@@ -55,4 +55,25 @@ class task extends database
         $deleteTask->execute();
         return $deleteTask;
     }
+
+    function modifyTask() {
+        //Déclaration de la requête SQL qui permet de modifier un utilisateur
+        $request = 'UPDATE `task` '
+                . 'SET `text` = :text, `deadline` = :deadline, `priority` = :priority '
+                . 'WHERE `id` = :id ';
+        // Prépare la requéte SQL pour éviter les injections 
+        $modify = $this->db->prepare($request);
+        // Remplacement des marqueurs nominatif
+        $modify->bindValue(':text', $this->text);
+        $modify->bindValue(':deadline', $this->deadline);
+        $modify->bindValue(':priority', $this->priority);
+        $modify->bindValue(':id', $this->id);
+        // Execution de la requête 
+        if ($modify->execute()) {
+            return;
+        } else {
+            // Si la requête ne c'est pas éxécuté on stock un message d'érreur dans le tableau d'érreur pour informer l'utilisateur
+            $formError['execute'] = 'une erreur dans le processus de modification';
+        }
+    }
 }
